@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.time.Instant;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,6 +23,7 @@ public class Order implements Serializable {
 	private Long id;
 	private Instant moment;
 	
+	@Enumerated(EnumType.STRING)
 	private OrderStatus orderStatus;
 	
 	public Order() {
