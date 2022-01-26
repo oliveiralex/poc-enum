@@ -9,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.educandoweb.pocEnum.entities.Order;
+import com.educandoweb.pocEnum.enums.OrderStatus;
 import com.educandoweb.pocEnum.repositories.OrderRepository;
 
 @SpringBootApplication
@@ -24,10 +25,11 @@ public class PocEnumApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
-		Order o1 = new Order(null, Instant.parse("2022-01-20T19:48:07Z"));
-		Order o2 = new Order(null, Instant.parse("2022-01-23T22:05:07Z"));
+		Order o1 = new Order(null, Instant.parse("2022-01-20T19:48:07Z"), OrderStatus.WAITING_PAYMENT);
+		Order o2 = new Order(null, Instant.parse("2022-01-23T22:05:07Z"), OrderStatus.PAID);
+		Order o3 = new Order(null, Instant.parse("2022-01-23T22:05:07Z"), OrderStatus.DELIVERED);
 		
-		repository.saveAll(Arrays.asList(o1, o2));
+		repository.saveAll(Arrays.asList(o1, o2, o3));
 		
 	}
 

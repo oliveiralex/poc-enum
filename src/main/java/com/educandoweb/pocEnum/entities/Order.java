@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.educandoweb.pocEnum.enums.OrderStatus;
+
 @Entity
 @Table(name = "tb_order")
 public class Order implements Serializable {
@@ -19,14 +21,17 @@ public class Order implements Serializable {
 	private Long id;
 	private Instant moment;
 	
+	private OrderStatus orderStatus;
+	
 	public Order() {
 	}
 
-	public Order(Long id, Instant moment) {
+	public Order(Long id, Instant moment, OrderStatus orderStatus) {
 		this.id = id;
 		this.moment = moment;
+		this.orderStatus = orderStatus;
 	}
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -41,5 +46,13 @@ public class Order implements Serializable {
 
 	public void setMoment(Instant moment) {
 		this.moment = moment;
+	}
+
+	public OrderStatus getOrderStatus() {
+		return orderStatus;
+	}
+
+	public void setOrderStatus(OrderStatus orderStatus) {
+		this.orderStatus = orderStatus;
 	}
 }
